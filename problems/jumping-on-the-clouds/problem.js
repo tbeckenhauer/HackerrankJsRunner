@@ -30,8 +30,25 @@ function readLine() {
  */
 
 function jumpingOnClouds(c) {
-    // Write your code here
-
+    function getNextJump(cloulds) {
+        if(clouds[1] == 1) {
+            console.log("Jump 1")
+            clouds.shift();
+            return clouds;
+        } else {
+            console.log("Jump 2")
+            clouds.shift();
+            clouds.shift();
+            return clouds;
+        }
+    }
+    let clouds = c;
+    let totalNumJumps = 0;
+    while(clouds.length > 1) {
+        clouds = getNextJump(clouds);
+        totalNumJumps += 1;
+    }
+    return totalNumJumps;
 }
 
 function main() {
