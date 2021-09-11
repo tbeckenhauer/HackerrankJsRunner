@@ -30,8 +30,20 @@ function readLine() {
  */
 
 function alternatingCharacters(s) {
-    // Write your code here
-
+    let sArr = s.split('')
+    let i = 0;
+    while(i < sArr.length) {
+        if(sArr[i+1] !== undefined) {
+            if(sArr[i] == sArr[i+1]) {
+                sArr.splice(i, 1);
+            } else {
+                i++;
+            }
+        } else {
+            break;
+        }
+    }
+    return s.split('').length - sArr.length
 }
 
 function main() {
