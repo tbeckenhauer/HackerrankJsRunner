@@ -15,11 +15,13 @@ getDirectories('./problems/')
     getDirectories(`./problems/${problem}/testcases/`)
       .sort((a, b) => { return a - b })
       .forEach(function (testcase) {
+        const out = fs.openSync(`./problems/${problem}/testcases/${testcase}/stdout.log`, "w");
+        const err = fs.openSync(`./problems/${problem}/testcases/${testcase}/stderr.log`, "w");
         let child = spawn('node', [
           `./problems/${problem}/problem.js`], {
-          env: { ...process.env, OUTPUT_PATH: `./problems/${problem}/testcases/${testcase}/output.actual.txt` }
-        }
-        );
+          env: { ...process.env, OUTPUT_PATH: `./problems/${problem}/testcases/${testcase}/output.actual.txt` },
+          stdio: [null, out, err]
+        });
 
         fs.readFile(`./problems/${problem}/testcases/${testcase}/input.txt`, 'utf8', function (err, data) {
           if (err) throw err;

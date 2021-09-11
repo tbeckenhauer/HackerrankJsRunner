@@ -1,1 +1,3 @@
 *.actual.txt
+stdout.log
+stderr.log
