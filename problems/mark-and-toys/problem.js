@@ -32,8 +32,13 @@ function readLine() {
  */
 
 function maximumToys(prices, k) {
-    // Write your code here
-
+    let pricesSorted = [...prices]
+    pricesSorted.sort((a,b)=>{return a-b});
+    while(k > pricesSorted[0]) {
+        k = k-pricesSorted[0]
+        pricesSorted.shift();
+    }
+    return prices.length - pricesSorted.length
 }
 
 function main() {
