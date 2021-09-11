@@ -44,7 +44,7 @@ function jumpingOnClouds(c) {
     }
     let clouds = c;
     let totalNumJumps = 0;
-    while(clouds.length > 0) {
+    while(clouds.length > 1) {
         clouds = getNextJump(clouds);
         totalNumJumps += 1;
     }
