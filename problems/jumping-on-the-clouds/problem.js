@@ -31,7 +31,7 @@ function readLine() {
 
 function jumpingOnClouds(c) {
     function getNextJump(cloulds) {
-        if(clouds[1] == 1) {
+        if(clouds[2] == 1) {
             console.log("Jump 1")
             clouds.shift();
             return clouds;
