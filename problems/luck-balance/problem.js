@@ -32,8 +32,36 @@ function readLine() {
  */
 
 function luckBalance(k, contests) {
-    // Write your code here
-
+    console.log(contests)
+    var sortedContests = contests.sort((a, b) => {
+        if (a[1] > b[1]) {
+        } else if (a[1] === b[1]) {
+            if(a[0] > b[0]) {
+                return -1;
+            } else {
+                return 1;
+            }
+        } else {
+            return -1;
+        }
+    })
+    let i1 = 0;
+    let i2 = 0;
+    let goodluck = 0;
+    while(i1 < sortedContests.length) {
+        if(sortedContests[i1][1] === 1) {
+            if(i2 < k) {
+                goodluck += sortedContests[i1][0];
+            } else {
+                goodluck -= sortedContests[i1][0];
+            }
+            i2 += sortedContests[i1][1];
+        } else {
+            goodluck += sortedContests[i1][0];
+        }
+        i1++;
+    }
+    return goodluck;
 }
 
 function main() {
