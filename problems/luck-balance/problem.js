@@ -33,9 +33,9 @@ function readLine() {
 
 function luckBalance(k, contests) {
     return contests
-        .sort((a, b) => (b[0] - a[0]))
+        .sort(sortDescending)
         .reduce((prv, cur, idx) => {
-            if(cur[1] === 0) {
+            if(isCurUnlucky(cur)) {
                 prv += cur[0];
             } else {
                 if(0 < k) {
@@ -48,6 +48,14 @@ function luckBalance(k, contests) {
             return prv;
         },
         0)
+}
+
+function sortDescending (a, b) {
+    return b[0] - a[0];
+}
+
+function isCurUnlucky(cur) {
+    return cur[1] === 0;
 }
 
 function main() {
